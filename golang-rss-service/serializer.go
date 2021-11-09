@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/gin-gonic/gin"
 )
 
 func Deserialize(data []byte, structure interface{}) error {
@@ -37,11 +36,11 @@ func Serialize(structure interface{}) ([]byte, error) {
 	return nil, nil
 }
 
-func Response(c *gin.Context, code int, data []interface{}) {
-
-	var response ResponseItem
-
-	response.Items = data
-
-	c.JSON(code, response)
-}
+//func Response(c *gin.Context, code int, data []interface{}) {
+//
+//	var response ResponseItem
+//
+//	response.Items = data
+//
+//	c.JSON(code, response)
+//}

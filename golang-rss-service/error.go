@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -8,24 +9,48 @@ import (
 	"path/filepath"
 )
 
+const (
+	General               = 11000
+	ValidationError       = 11001
+	HttpBadRequest        = 400
+	StructNotFound        = 11002
+	HttpUnauthorized      = 401
+	HttpNotFoundException = 404
+	HttpServerException   = 500
+	NonUniqueValue        = 11004
+	ServiceException      = 11008
+)
+
+var statusText = map[int]string{
+
+	General:               "services.general.bad_request",
+	ValidationError:       "service.general.validation_error",
+	HttpBadRequest:        "service.general.bad_request",
+	StructNotFound:        "service.general.struct_not_found",
+	HttpUnauthorized:      "service.general.unauthorized",
+	HttpNotFoundException: "service.general.http_not_found",
+	HttpServerException:   "service.general.service_request_exception",
+	NonUniqueValue:        "service.general.non_unique_value",
+	ServiceException:      "service.general.service_exception",
+}
+
+// StatusText returns a text for the HTTP status code. It returns the empty
+// string if the code is unknown.
+func StatusText(code int) string {
+	return statusText[code]
+}
+
+
 func LogError(exception string) {
 
-	// Enable logging
-	var filename string
-
-	if os.Getenv("ENV") == "dev" {
-
-		filename, _ = filepath.Abs("logs/prod.log") // TODO: change to ../logs
-	} else {
-
-		filename, _ = filepath.Abs("../logs/prod.log") // TODO: change to ../logs
-	}
+	filename, _ := filepath.Abs("logger.log") // TODO: change to ../logs
 
 	if !LogFileExists(filename) {
 
 		err := CreateLogFile(filename)
 		if err != nil {
 
+			fmt.Printf("%v TEST", err)
 			panic(err)
 		}
 	}
@@ -44,6 +69,6 @@ func LogError(exception string) {
 func ErrorResponse(c *gin.Context, exception *ErrorResponseStruct) {
 
 	LogError(exception.ErrorMsg)
-	c.JSON(http.StatusOK, exception)
+	c.JSON(http.StatusBadRequest, exception)
 }
 
