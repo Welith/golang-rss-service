@@ -6,6 +6,12 @@ ENV GO111MODULE=on \
     GOOS=linux \
     GOARCH=amd64
 
+#alpine systemctl
+RUN apk add openrc --no-cache
+
+#Isntall Redis
+RUN apk --update add redis
+
 # Move to working directory /build
 WORKDIR /build
 

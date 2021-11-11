@@ -40,15 +40,14 @@ func StatusText(code int) string {
 	return statusText[code]
 }
 
-
+//LogError proper error logging
 func LogError(exception string) {
 
 	filename, _ := filepath.Abs("logger.log") // TODO: change to ../logs
 
 	if !LogFileExists(filename) {
 
-		err := CreateLogFile(filename)
-		if err != nil {
+		if err := CreateLogFile(filename); err != nil {
 
 			fmt.Printf("%v TEST", err)
 			panic(err)

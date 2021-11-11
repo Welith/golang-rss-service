@@ -7,9 +7,9 @@ import (
 
 var client *redis.Client
 
+//init initialise a redis instance when the service is started
 func init() {
 
-	//Initializing redis
 	dsn := os.Getenv("REDIS_DSN")
 
 	if len(dsn) == 0 {

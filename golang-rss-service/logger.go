@@ -18,6 +18,7 @@ func LogFileExists(name string) bool {
 func CreateLogFile(name string) error {
 
 	fo, err := os.Create(name)
+
 	if err != nil {
 
 		return err
