@@ -2,9 +2,21 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+	"path/filepath"
 )
 
 func main()  {
+
+	err := godotenv.Load(filepath.Join(".", ".env"))
+
+	if err != nil {
+
+		panic(err)
+	}
+
+	//panic("test")
+	go ProcessIncomingMessages()
 
 	r := gin.Default()
 
