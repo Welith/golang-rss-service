@@ -65,9 +65,7 @@ func ProcessIncomingMessages() {
 
 			messageData := Request{}
 
-			err = Deserialize(d.Body, &messageData.Urls)
-
-			if err != nil {
+			if err = Deserialize(d.Body, &messageData.Urls); err != nil {
 
 				LogError(err.Error())
 			}

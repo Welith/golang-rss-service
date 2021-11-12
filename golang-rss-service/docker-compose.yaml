@@ -1,12 +1,10 @@
 # Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
 version: '3'
 
-# Define services
 services:
 
-  # App Service
-  app:
-    # Configuration for building the docker image for the service
+  go-app:
+
     build:
       context: . # Use an image built from the specified dockerfile in the current directory.
       dockerfile: Dockerfile
@@ -14,23 +12,36 @@ services:
       - "3000:3000" # Forward the exposed port 3000 on the container to port 3000 on the host machine
     restart: unless-stopped
     depends_on:
-      - redis # This service depends on redis. Start that first.
-    environment: # Pass environment variables to the service
+      - redis
+      - rabbitmq
+    environment:
       REDIS_DSN: redis:6379
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - backend
+      - laravel-rss-app_sail
+
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - laravel-rss-app_sail
 
   # Redis Service
   redis:
     image: "redis:alpine" # Use a public Redis image to build the redis service
     restart: unless-stopped
     networks:
-      - backend
+      - laravel-rss-app_sail
     ports:
       - "6379:6379"
 
 networks:
-  rabbitmq_go_net:
-    driver: bridge
-  backend:
-    driver: bridge
+  laravel-rss-app_sail:
+    external: true
