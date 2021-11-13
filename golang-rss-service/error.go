@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -49,7 +48,6 @@ func LogError(exception string) {
 
 		if err := CreateLogFile(filename); err != nil {
 
-			fmt.Printf("%v TEST", err)
 			panic(err)
 		}
 	}
