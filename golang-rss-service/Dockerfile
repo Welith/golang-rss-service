@@ -10,6 +10,7 @@ ENV GO111MODULE=on \
 WORKDIR /build
 
 COPY .env .
+COPY logger.log .
 # Copy and download dependency using go mod
 COPY go.mod .
 COPY go.sum .
@@ -22,6 +23,8 @@ COPY . .
 RUN go build -o main .
 
 COPY .env /dist/
+COPY logger.log /dist/
+
 # Move to /dist directory as the place for resulting binary folder
 WORKDIR /dist
 

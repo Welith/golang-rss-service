@@ -36,13 +36,14 @@ var statusText = map[int]string{
 // StatusText returns a text for the HTTP status code. It returns the empty
 // string if the code is unknown.
 func StatusText(code int) string {
+
 	return statusText[code]
 }
 
 //LogError proper error logging
 func LogError(exception string) {
 
-	filename, _ := filepath.Abs("logger.log") // TODO: change to ../logs
+	filename, _ := filepath.Abs("logger.log")
 
 	if !LogFileExists(filename) {
 
