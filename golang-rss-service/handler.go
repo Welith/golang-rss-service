@@ -52,6 +52,11 @@ func ParseFeed(c *gin.Context)  {
 
 	response.Items = result
 
+	if response.Items == nil {
+
+		response.Items = []golang_rss_reader_package.RssItem{}
+	}
+
 	c.JSON(http.StatusOK, response)
 }
 

@@ -6,7 +6,8 @@ import (
 )
 
 type ResponseItem struct {
-	Items []golang_rss_reader_package.RssItem `json:"items"`
+
+	Items []golang_rss_reader_package.RssItem  `json:"items"`
 }
 
 type ErrorResponseStruct struct {
@@ -15,6 +16,7 @@ type ErrorResponseStruct struct {
 }
 
 type Request struct {
+
 	Urls []string `json:"urls"`
 }
 

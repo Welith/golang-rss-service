@@ -162,24 +162,34 @@ func TokenValid(r *http.Request) error {
 func ExtractTokenMetadata(r *http.Request) (*AccessDetails, error) {
 
 	token, err := VerifyToken(r)
+
 	if err != nil {
+
 		return nil, err
 	}
+
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if ok && token.Valid {
+
 		accessUuid, ok := claims["access_uuid"].(string)
+
 		if !ok {
+
 			return nil, err
 		}
 		userId, err := strconv.ParseUint(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
+
 		if err != nil {
+
 			return nil, err
 		}
+
 		return &AccessDetails{
 			AccessUuid: accessUuid,
 			UserId:   userId,
 		}, nil
 	}
+
 	return nil, err
 }
 
@@ -198,6 +208,7 @@ func FetchAuth(authD *AccessDetails) (uint64, error) {
 }
 
 func DeleteAuth(givenUuid string) (int64,error) {
+
 	deleted, err := client.Del(givenUuid).Result()
 	if err != nil {
 		return 0, err
@@ -209,12 +220,16 @@ func DeleteAuth(givenUuid string) (int64,error) {
 func TokenAuthMiddleware() gin.HandlerFunc {
 
 	return func(c *gin.Context) {
+
 		err := TokenValid(c.Request)
+
 		if err != nil {
+
 			c.JSON(http.StatusUnauthorized, err.Error())
 			c.Abort()
 			return
 		}
+
 		c.Next()
 	}
 }
