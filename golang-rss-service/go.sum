@@ -1,5 +1,7 @@
 github.com/Welith/golang-rss-reader-package v0.0.0-20211109094420-814a42d63015 h1:HVizqak1x9pd8KdprRysRcem2dOf0W8hyWGWGY5rXkc=
 github.com/Welith/golang-rss-reader-package v0.0.0-20211109094420-814a42d63015/go.mod h1:Jytm8RAHXTj+1xU6aAibeiZRvUzSaPD15GkrJVJ5270=
+github.com/Welith/golang-rss-reader-package v0.0.0-20211113145322-c158ebd4cf1c h1:gzJ1pil+Xevgb/Itp3ByxFIP9FuAvk04Ri+bQJZIm+c=
+github.com/Welith/golang-rss-reader-package v0.0.0-20211113145322-c158ebd4cf1c/go.mod h1:yyaj59CdNcQB4xuEsX3/tAOkFAKfLtycXmabbUx6Vyk=
 github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d h1:Byv0BzEl3/e6D5CLfI0j/7hiIEtvGVFPCZ7Ei2oq8iQ=
 github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d/go.mod h1:WaHUgvxTVq04UNunO+XhnAqY/wQc+bxr74GqbsZ/Jqw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

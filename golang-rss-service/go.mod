@@ -3,7 +3,7 @@ module golang-rss-service
 go 1.17
 
 require (
-	github.com/Welith/golang-rss-reader-package v0.0.0-20211109094420-814a42d63015
+	github.com/Welith/golang-rss-reader-package v0.0.0-20211113145322-c158ebd4cf1c
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible

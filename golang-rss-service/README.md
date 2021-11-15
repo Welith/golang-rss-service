@@ -15,6 +15,7 @@ This service should serve as a proxy to parse URL via API calls. The parsing is 
             "source_url": string,
             "publish_date": string,
             "description": text
+        }
     ]
 }
 ```
