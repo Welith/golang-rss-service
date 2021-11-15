@@ -57,6 +57,10 @@ AMQP_TRANSPORT="amqp://guest:guest@rabbitmq:5672/" -> "amqp://guest:guest@localh
 LARAVEL_APP_URL=http://laravel.test:80 (http://localhost:80 if laravel-app is ran locally)
 ```
 ## Notes on the service
+
+### RabbitMQ
+This services acts as a rabbitMQ consumer as well. This is why it needs rabbitMQ. The laravel application sends messages to queue and this service listens and parses the messages, sending the parsed items to be stored in the laravel application.
+
 ### JWT
 JWT tokens have been introduced in order to introduce a basic level of security (in this case using an in-memory user). In order to access the feeds API, you first need to login. For testing purposes the test user is as follows: <br>
 `username: emerchantpay password: password` <br>
