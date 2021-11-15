@@ -22,7 +22,7 @@ This service should serve as a proxy to parse URL via API calls. The parsing is 
 
 ## Installation
 
-Inside the .env file you need to add some variables:
+Inside the .env file you need to add some variables (these are set-up for docker compose use):
 
 ```
 ACCESS_SECRET=jdnfksdmfksd
